@@ -2768,28 +2768,45 @@
       const source = form.id === 'heroForm' ? 'Hero Form' : document.getElementById('modal-source').value;
       const message = `[Landmark Rivera] Interest: ${config}. Form source: ${source}.`;
       
-      // Route exclusively through central Housing Mantra leads gateway to prevent persistence failures
+      // ── Primary: WorkVEU CRM Integration ──────────────────────────────
       try {
-        const response = await fetch('https://www.housingmantra.in/api/leads', {
+        const wvResponse = await fetch('https://services.workveu.com/integration/web/api', {
           method: 'POST',
           headers: {
+            'Authorization': 'a8efb3baeb7a3b793edf7f9698acb1757dbaece08ca07ea04cdcd7d3acd72daf',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             name: name,
-            mobile: mobile,
-            email: '',
+            contact_no: mobile,
+            contact_email: '',
             message: message,
-            query_form: 'Landmark Rivera Landing Page',
-            projectSlug: 'landmark-rivera'
+            query_form: 'Landmark Riveeraa Landing Page'
           })
         });
-        
-        if (!response.ok) {
-          throw new Error('Centralized API Error status: ' + response.status);
+        if (!wvResponse.ok) {
+          throw new Error('WorkVEU API error: ' + wvResponse.status);
         }
-      } catch (err) {
-        console.warn('Primary leads gateway sync error. Saving locally and registering backup.', err);
+        console.log('✅ Lead submitted to WorkVEU CRM');
+      } catch (wvErr) {
+        console.warn('WorkVEU submission failed. Falling back to Housing Mantra gateway.', wvErr);
+        // ── Fallback: Housing Mantra Central Gateway ──────────────────────
+        try {
+          await fetch('https://www.housingmantra.in/api/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name,
+              mobile: mobile,
+              email: '',
+              message: message,
+              query_form: 'Landmark Riveeraa Landing Page',
+              projectSlug: 'landmark-rivera'
+            })
+          });
+        } catch (hmErr) {
+          console.warn('Fallback gateway also failed.', hmErr);
+        }
       }
       
       // Save local session state to prevent multiple submissions
