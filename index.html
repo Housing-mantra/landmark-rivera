@@ -1820,20 +1820,70 @@
       }
       
       .hero-pills {
-        gap: 8px;
+        gap: 6px;
+        flex-wrap: wrap;
       }
       
       .hero-pills .pill {
-        padding: 8px 12px;
-        font-size: 0.75rem;
+        padding: 7px 10px;
+        font-size: 0.72rem;
       }
       
       .hero h1 {
-        font-size: 2.1rem;
+        font-size: 1.9rem;
+        line-height: 1.2;
+      }
+      
+      .hero h2 {
+        font-size: 0.95rem;
+      }
+
+      /* Hero CTA buttons — stack on very small screens */
+      .hero-text > div[style*="display: flex"] {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-text > div[style*="display: flex"] .btn,
+      .hero-text > div[style*="display: flex"] button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      /* Hero form full width */
+      .hero-form-card {
+        max-width: 100%;
+        padding: 24px 18px;
       }
       
       .config-card {
         max-width: 100%;
+      }
+
+      /* Stats bar — keep 3 cols on small phones */
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .stat-number {
+        font-size: 1.4rem;
+      }
+
+      .stat-label {
+        font-size: 0.68rem;
+      }
+
+      /* Section title scaling */
+      .section-title h2 {
+        font-size: 1.7rem;
+      }
+
+      /* Modal full-width on small phones */
+      .modal-content {
+        padding: 24px 18px;
+        margin: 12px;
       }
     }
   </style>
