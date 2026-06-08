@@ -192,23 +192,25 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
     :root {
-      --bg: #FAFCFB;
+      --bg: #ebeeee;                      /* Brand: light gray background */
       --white: #FFFFFF;
-      --text: #1A302B;
-      --text-light: #4A635D;
-      --muted: #6C847E;
-      --light: #F0F4F2;
-      --border: #E2EAE7;
-      --primary: #0A221A; /* Deep Forest/River Green */
-      --primary-light: #EBF2EF;
-      --gold: #C29B47; /* Premium Gold Accent */
-      --gold-dark: #A17E32;
-      --gold-light: #FDF9F0;
+      --text: #0b1311;                    /* Brand: near-black text */
+      --text-light: #5f647d;             /* Brand: medium slate */
+      --muted: #878ca2;                  /* Brand: muted blue-gray */
+      --light: #f4f5f6;
+      --border: #bdbfc7;                 /* Brand: light border */
+      --primary: #172453;               /* Brand: deep navy */
+      --primary-light: #e8eaf2;
+      --primary-mid: #3a4268;           /* Brand: medium navy/slate */
+      --gold: #3a4268;                  /* Brand accent (replaces gold) */
+      --gold-dark: #172453;
+      --gold-light: #eef0f8;
+      --secondary: #909494;             /* Brand: gray */
       --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
       --font-heading: 'Playfair Display', Georgia, serif;
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 6px 18px rgba(10, 34, 26, 0.06);
-      --shadow-lg: 0 16px 36px rgba(10, 34, 26, 0.1);
+      --shadow-sm: 0 2px 4px rgba(23, 36, 83, 0.06);
+      --shadow-md: 0 6px 18px rgba(23, 36, 83, 0.10);
+      --shadow-lg: 0 16px 36px rgba(23, 36, 83, 0.14);
       --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -283,7 +285,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background-color: var(--gold);
+      background-color: var(--primary);
       color: var(--white);
       font-weight: 700;
       text-transform: uppercase;
@@ -295,26 +297,26 @@
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none;
-      box-shadow: 0 4px 14px rgba(194, 155, 71, 0.15);
+      box-shadow: 0 4px 14px rgba(23, 36, 83, 0.20);
     }
     
     .btn:hover {
-      background-color: var(--gold-dark);
+      background-color: var(--primary-mid);
       transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 8px 24px rgba(194, 155, 71, 0.3);
+      box-shadow: 0 8px 24px rgba(23, 36, 83, 0.30);
     }
     
     .btn-secondary {
       background-color: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold);
+      border: 2px solid var(--primary);
+      color: var(--primary);
       box-shadow: none;
     }
     
     .btn-secondary:hover {
-      background-color: var(--gold);
+      background-color: var(--primary);
       color: var(--white);
-      box-shadow: 0 4px 10px rgba(194, 155, 71, 0.2);
+      box-shadow: 0 4px 10px rgba(23, 36, 83, 0.2);
     }
     
     .btn-white {
@@ -455,7 +457,7 @@
       min-height: calc(100vh - 80px);
       display: flex;
       align-items: center;
-      background-color: #08120e;
+      background-color: #0b1122;
     }
     
     .hero-bg-container {
@@ -471,17 +473,17 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.45;
+      opacity: 0.38;
     }
     
-    /* Fallback stylized river-themed gradient when image is not present */
+    /* Fallback brand-navy gradient */
     .hero-bg-fallback {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 70% 30%, #0d2d23 0%, #06110d 100%);
+      background: radial-gradient(circle at 60% 40%, #1e2d6b 0%, #0b1122 100%);
       z-index: 0;
     }
     
@@ -489,7 +491,7 @@
       position: relative;
       width: 100%;
       padding: 60px 0;
-      background: linear-gradient(to right, rgba(8, 18, 14, 0.95) 40%, rgba(8, 18, 14, 0.6) 70%, rgba(8, 18, 14, 0.2));
+      background: linear-gradient(to right, rgba(11, 17, 34, 0.95) 40%, rgba(11, 17, 34, 0.65) 70%, rgba(11, 17, 34, 0.15));
       z-index: 10;
       min-height: calc(100vh - 80px);
       display: flex;
@@ -516,12 +518,12 @@
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #bdbfc7;
       margin-bottom: 20px;
-      background-color: rgba(194, 155, 71, 0.12);
+      background-color: rgba(58, 66, 104, 0.25);
       padding: 6px 14px;
       border-radius: 50px;
-      border: 1px solid rgba(194, 155, 71, 0.3);
+      border: 1px solid rgba(189, 191, 199, 0.35);
     }
     
     .hero h1 {
@@ -532,12 +534,12 @@
       margin-bottom: 20px;
     }
     
-    .hero h1 span { color: var(--gold); }
+    .hero h1 span { color: #bdbfc7; }
     
     .hero h2 {
       font-size: 1.4rem;
       font-weight: 400;
-      color: #A8C2B8;
+      color: #909494;
       margin-bottom: 30px;
       line-height: 1.5;
     }
@@ -565,10 +567,10 @@
     
     .hero-pills .pill:hover {
       background-color: rgba(255, 255, 255, 0.1);
-      border-color: var(--gold);
+      border-color: #bdbfc7;
     }
     
-    .hero-pills .pill i { color: var(--gold); }
+    .hero-pills .pill i { color: #bdbfc7; }
 
     /* Hero Form Card */
     .hero-form-card {
@@ -577,8 +579,8 @@
       padding: 32px;
       box-shadow: var(--shadow-lg);
       width: 100%;
-      border: 1px solid rgba(10, 34, 26, 0.08);
-      border-top: 5px solid var(--gold);
+      border: 1px solid rgba(23, 36, 83, 0.10);
+      border-top: 5px solid var(--primary);
       position: relative;
     }
     
@@ -626,9 +628,9 @@
     }
     
     .form-control:focus {
-      border-color: var(--gold);
+      border-color: var(--primary);
       background-color: var(--white);
-      box-shadow: 0 0 0 4px rgba(194, 155, 71, 0.12);
+      box-shadow: 0 0 0 4px rgba(23, 36, 83, 0.10);
     }
     
     .form-error {
@@ -728,7 +730,7 @@
     
     .stat-number em {
       font-style: normal;
-      color: var(--gold);
+      color: var(--primary-mid);
     }
     
     .stat-label {
@@ -769,7 +771,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #0d2c22 0%, #1e4d3e 100%);
+      background: linear-gradient(135deg, #172453 0%, #3a4268 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -781,7 +783,7 @@
       font-family: var(--font-heading);
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--gold);
+      color: var(--primary);
       margin-bottom: 20px;
     }
     
@@ -1326,10 +1328,10 @@
 
     /* --- FOOTER & DISCLAIMER --- */
     footer {
-      background-color: #07120e;
-      color: #A8C2B8;
+      background-color: var(--white);
+      color: var(--text-light);
       padding: 80px 0 40px;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 3px solid var(--primary);
     }
     
     .footer-grid {
@@ -1340,7 +1342,7 @@
     }
     
     .footer-col h4 {
-      color: var(--white);
+      color: var(--primary);
       font-family: var(--font-heading);
       font-size: 1.2rem;
       margin-bottom: 24px;
@@ -1354,11 +1356,19 @@
       bottom: -8px;
       width: 30px;
       height: 2px;
-      background-color: var(--gold);
+      background-color: var(--primary-mid);
     }
     
+    .footer-logo-img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 16px;
+      display: block;
+    }
+
     .footer-logo {
-      color: var(--white);
+      color: var(--primary);
       font-family: var(--font-heading);
       font-size: 1.6rem;
       font-weight: 700;
@@ -1367,12 +1377,13 @@
       text-decoration: none;
     }
     
-    .footer-logo span { color: var(--gold); }
+    .footer-logo span { color: var(--primary-mid); }
     
     .footer-about {
       font-size: 0.9rem;
       line-height: 1.6;
       margin-bottom: 20px;
+      color: var(--text-light);
     }
     
     .footer-links {
@@ -1384,7 +1395,7 @@
     }
     
     .footer-links a {
-      color: #A8C2B8;
+      color: var(--text-light);
       text-decoration: none;
       font-size: 0.92rem;
       transition: var(--transition);
@@ -1394,7 +1405,7 @@
     }
     
     .footer-links a:hover {
-      color: var(--gold);
+      color: var(--primary);
       transform: translateX(4px);
     }
     
@@ -1411,7 +1422,7 @@
     }
     
     .contact-info-item i {
-      color: var(--gold);
+      color: var(--primary);
       font-size: 1.1rem;
       margin-top: 4px;
     }
@@ -1421,36 +1432,37 @@
     }
     
     .contact-info-item p {
-      color: var(--white);
+      color: var(--text);
       font-weight: 600;
     }
     
     .contact-info-item a {
-      color: #A8C2B8;
+      color: var(--text-light);
       text-decoration: none;
       transition: var(--transition);
     }
     
     .contact-info-item a:hover {
-      color: var(--gold);
+      color: var(--primary);
     }
     
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid var(--border);
       padding-top: 30px;
       font-size: 0.78rem;
       line-height: 1.6;
       text-align: justify;
+      color: var(--muted);
     }
     
     .footer-bottom strong {
-      color: var(--white);
+      color: var(--text);
     }
     
     .rera-badge {
       display: inline-block;
-      border: 1px solid var(--gold);
-      color: var(--gold);
+      border: 1px solid var(--primary);
+      color: var(--primary);
       font-weight: 700;
       padding: 6px 16px;
       border-radius: 4px;
@@ -2429,7 +2441,9 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="#home" class="footer-logo">CODENAME <span>RIVEERAA</span></a>
+          <a href="#home">
+            <img src="assets/images/logo.png" alt="Landmark Group Logo" class="footer-logo-img">
+          </a>
           <p class="footer-about">
             A premium residential community by Landmark Group, presenting naturescaped and river view flats in Dudulgaon, Pune. Experience unmatched specifications, green layouts, and convenient connectivity.
           </p>
@@ -2471,7 +2485,7 @@
               <i class="fa-solid fa-map-location-dot"></i>
               <div>
                 <span>Project Site Address</span>
-                <p style="color: #A8C2B8; font-weight: 500;">Gat No-234 (P), Dudulgaon, Alandi-Moshi Spine Road, Pune, Maharashtra</p>
+                <p style="color: var(--text-light); font-weight: 500;">Gat No-234 (P), Dudulgaon, Alandi-Moshi Spine Road, Pune, Maharashtra</p>
               </div>
             </div>
           </div>
@@ -2484,7 +2498,7 @@
         </p>
         
         <div class="copyright-row">
-          <span>&copy; 2026 Codename Riveeraa. All rights reserved.</span>
+          <span>&copy; 2026 Landmark Riveeraa. All rights reserved.</span>
           <span>Marketed by Housing Mantra (Authorized Channel Partner).</span>
         </div>
       </div>
