@@ -3,3 +3,5 @@ node_modules/
 *.pdf
 *_text.txt
 extract_pdfs.py
+.vercel
+.env*
