@@ -2627,7 +2627,7 @@
         <i class="fa-solid fa-phone"></i>
         <span>Call Now</span>
       </a>
-      <a href="https://wa.me/917420880067?text=Hi%2C%20I%20am%20interested%20in%20Codename%20Riveeraa%20project%20in%20Dudulgaon.%20Please%20send%20brochure%20and%20pricing." target="_blank" rel="noopener" class="sticky-btn sticky-btn-whatsapp">
+      <a href="https://wa.me/917888041188?text=Hi%2C%20I%20am%20interested%20in%20Codename%20Riveeraa%20project%20in%20Dudulgaon.%20Please%20send%20brochure%20and%20pricing." target="_blank" rel="noopener" class="sticky-btn sticky-btn-whatsapp">
         <i class="fa-brands fa-whatsapp"></i>
         <span>WhatsApp</span>
       </a>
@@ -2639,7 +2639,7 @@
   </div>
 
   <!-- --- FLOATING WHATSAPP BUTTON (DESKTOP) --- -->
-  <a href="https://wa.me/917420880067?text=Hi%2C%20I%20am%20interested%20in%20Codename%20Riveeraa%20project%20in%20Dudulgaon.%20Please%20send%20brochure%20and%20pricing." target="_blank" rel="noopener" class="floating-whatsapp" aria-label="WhatsApp Us">
+  <a href="https://wa.me/917888041188?text=Hi%2C%20I%20am%20interested%20in%20Codename%20Riveeraa%20project%20in%20Dudulgaon.%20Please%20send%20brochure%20and%20pricing." target="_blank" rel="noopener" class="floating-whatsapp" aria-label="WhatsApp Us">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -2794,9 +2794,11 @@
         nameInput.classList.remove('invalid');
       }
       
-      // Mobile validation (10 digits starting with 6-9)
+      // Mobile validation (10 digits starting with 6-9 and not repetitive)
       const mobileRegex = /^[6-9][0-9]{9}$/;
-      if (!mobileInput.value.trim() || !mobileRegex.test(mobileInput.value.trim())) {
+      const mobileVal = mobileInput.value.trim();
+      const repetitives = ['1234567890', '9876543210', '0000000000', '1111111111', '2222222222', '3333333333', '4444444444', '5555555555', '6666666666', '7777777777', '8888888888', '9999999999'];
+      if (!mobileVal || !mobileRegex.test(mobileVal) || repetitives.includes(mobileVal)) {
         document.getElementById(prefix + 'mobile-error').style.display = 'block';
         mobileInput.classList.add('invalid');
         isFormValid = false;
@@ -2826,45 +2828,26 @@
       const source = form.id === 'heroForm' ? 'Hero Form' : document.getElementById('modal-source').value;
       const message = `[Landmark Rivera] Interest: ${config}. Form source: ${source}.`;
       
-      // ── Primary: WorkVEU CRM Integration ──────────────────────────────
+      // ── Housing Mantra Central Gateway ──────────────────────
       try {
-        const wvResponse = await fetch('https://services.workveu.com/integration/web/api', {
+        const hmResponse = await fetch('https://www.housingmantra.in/api/leads', {
           method: 'POST',
-          headers: {
-            'Authorization': 'a8efb3baeb7a3b793edf7f9698acb1757dbaece08ca07ea04cdcd7d3acd72daf',
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             name: name,
-            contact_no: mobile,
-            contact_email: '',
+            mobile: mobile,
+            email: '',
             message: message,
-            query_form: 'Landmark Riveeraa Landing Page'
+            query_form: 'Landmark Riveeraa Landing Page',
+            projectSlug: 'landmark-rivera'
           })
         });
-        if (!wvResponse.ok) {
-          throw new Error('WorkVEU API error: ' + wvResponse.status);
+        if (!hmResponse.ok) {
+          throw new Error('Central Gateway error: ' + hmResponse.status);
         }
-        console.log('✅ Lead submitted to WorkVEU CRM');
-      } catch (wvErr) {
-        console.warn('WorkVEU submission failed. Falling back to Housing Mantra gateway.', wvErr);
-        // ── Fallback: Housing Mantra Central Gateway ──────────────────────
-        try {
-          await fetch('https://www.housingmantra.in/api/leads', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: name,
-              mobile: mobile,
-              email: '',
-              message: message,
-              query_form: 'Landmark Riveeraa Landing Page',
-              projectSlug: 'landmark-rivera'
-            })
-          });
-        } catch (hmErr) {
-          console.warn('Fallback gateway also failed.', hmErr);
-        }
+        console.log('✅ Lead submitted to central gateway');
+      } catch (hmErr) {
+        console.error('Submission to central gateway failed.', hmErr);
       }
       
       // Save local session state to prevent multiple submissions
